@@ -37,4 +37,6 @@ En el caso de los datos para Colombia, el mismo se actualiza con la información
 
 Finalmente recuerde que acá solo se comparan algunos países que en lo particular me parecieron interesantes bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
 
+## Comparaciones entre países
 
+<image src="images/compara.png"> 
