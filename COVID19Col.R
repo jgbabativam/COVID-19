@@ -108,8 +108,19 @@ ggsave(file = "./images/compara.png",
 ggarrange(g1, ggarrange(g2, g3, ncol=1), ncol=2, common.legend = TRUE, legend = "top"),
 width = 12, height = 8, dpi = 100, units = "in", device='png')
 
+
+## Mapa
 fecha <- total %>% 
          dplyr::filter(fecha == lubridate::today()-1 & nro_confirmados > 0)
-
-%>% 
 summary(fecha)
+
+mundo <- ggplot() +
+          borders("world", colour = "gray85", fill = "gray80") +
+          theme_map()
+
+ggsave(file = "./images/worldmap.png", mundo +
+        geom_point(aes(x = Long, y = Lat, size = nro_confirmados), data = fecha, alpha = .5, color="red") +
+        scale_size(range=c(2, 12)) +
+        labs(title = paste0("Casos confirmados COVID-19 al ", lubridate::today()-1), size = 'Confirmados', caption = "@jgbabativam") +
+        theme(plot.caption = element_text(hjust = 0, color="gray40", size=15)), 
+width = 12, height = 8, dpi = 100, units = "in", device='png')

@@ -7,10 +7,7 @@ Los resultados obtenidos en este informe están actualizados al: 19-03-2020
 
 ## Objetivo del recurso
 
-Este recurso se hace solo con fines académicos y aunque no se usa con un propósito específico para explicar alguna metodología de análisis o modelo de datos, el código en R se deja abierto para generar un proceso transparente. 
-
-Considero que cualquier explicación sobre los modelos estadísticos puede ser mejor entendida por los estudiantes cuando se aplica en un escenario cercano para todos, por esto el código de R puede ser utilizado en la academia por otros colegas y estudiantes para replicar los resultados o hacer otros análisis. De igual manera, son bienvenidas todas las sugerencias sobre los que se presentan acá.
-
+Este recurso se hace solo con fines académicos y aunque no se usa con un propósito específico para explicar alguna metodología de análisis o modelo de datos, el código en R se deja abierto para generar un proceso transparente. El script de R puede ser utilizado en la academia por otros colegas y estudiantes para replicar los resultados o hacer otros análisis. 
 ## Fuente de los datos
 
 Los datos se toman del repositorio CSSE de la Universidad Johns Hopkins (https://systems.jhu.edu/) y que pueden ser descargados de GitHub. 
@@ -31,21 +28,13 @@ En el caso de los datos para Colombia, el mismo se actualiza con la información
 
 - Es posible que pueda encontrar errores. Si lo hace, por favor envíe un correo electrónico.
 
-- Recuerde que este es un recurso académico, los análisis epidemiológicos son más complejos y dependen de varios factores.
+- Recuerde que este es un recurso académico, los análisis epidemiológicos son más complejos y dependen de diversos factores.
 
-<<<<<<< HEAD
-
-Finalmente recuerde que acá solo se comparan algunos países que me parecieron interesantes bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
+Finalmente recuerde que acá solo se comparan algunos de los países que me parecieron interesantes, bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
 
 ## Comparaciones entre países
 
 <image src="images/compara.png"> 
 <image src="images/worldmap.png"> 
-=======
->>>>>>> 060ba8e5399a69d3a55087c154923de4dc072760
 
-Finalmente recuerde que acá solo se comparan algunos países que me parecieron interesantes bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
-
-## Comparaciones entre países
-
-<image src="images/compara.png"> 
+## Gráficos específicos para Colombia
