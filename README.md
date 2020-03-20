@@ -7,18 +7,19 @@ Los resultados obtenidos en este informe están actualizados al: 19-03-2020
 
 ## Objetivo del recurso
 
-Este recurso se hace solo con fines académicos y aunque no se usa con un propósito específico para explicar alguna metodología de análisis o modelo de datos, el código en R se deja abierto para generar un proceso transparente. El script de R puede ser utilizado en la academia por otros colegas y estudiantes para replicar los resultados o hacer otros análisis. 
+Este recurso se hace con fines académicos y no tiene un propósito específico de explicar alguna metodología de análisis o modelo de datos. El código en R se deja abierto para generar transparencia de los resultados. Además el script de R puede ser utilizado en la academia por otros colegas o estudiantes que deseen replicar los resultados o hacer otros análisis a partir de los datos.
+
 ## Fuente de los datos
 
-Los datos se toman del repositorio CSSE de la Universidad Johns Hopkins (https://systems.jhu.edu/) y que pueden ser descargados de GitHub. 
+Los datos se toman del repositorio CSSE de la Universidad Johns Hopkins (https://systems.jhu.edu/) y pueden ser descargados de GitHub. 
 
-Como se indica en la fuente, los datos se obtuvieron de la Organización Mundial de la Salud y de muchas instituciones estatales de salud. Estos datos son propiedad de la Universidad John Hopkins y están disponibles solo para fines de investigación académica y educativa.  Dado que los datos provienen de diferentes fuentes, no hay garantía de la precisión de los datos.  Es absolutamente incorrecto utilizarlo con fines médicos o comerciales. Si se desea realizar un análisis específico por favor use las fuentes oficiales de cada país (https://github.com/CSSEGISandData/COVID-19). 
+Como se indica en la fuente, los datos se obtuvieron de la Organización Mundial de la Salud y de varias instituciones estatales de salud. Estos datos son propiedad de la Universidad John Hopkins y están disponibles solo para fines de investigación académica o enseñanza. Dado que los datos provienen de diferentes fuentes, no hay garantía de la precisión de los datos, por lo que es incorrecto utilizarlos con fines médicos o comerciales. Si se desea realizar un análisis de ese tipo por favor use las fuentes oficiales de cada país (https://github.com/CSSEGISandData/COVID-19). 
 
-En el caso de los datos para Colombia, el mismo se actualiza con la información reportada por el Instituto Nacional de Salud con corte a las 20:00 hrs de cada día, tomando el dato de https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx. Para mayor información sobre el proceso de datos se recomienda revisar el archivo COVID19Col.R.
+En el caso de los datos para Colombia, se toma la información reportada por el Instituto Nacional de Salud con corte a las 20:00 hrs de cada día, el cual se encuentra en https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx. Para mayor información sobre el proceso de los datos se recomienda revisar el archivo COVID19Col.R.
 
 ## Advertencias
 
-- Si usted decide compartir las imágenes obtenidas a partir de este  análisis, asegúrese de que el enlace quede visible o comparta este link. Evitemos al máximo el mal uso o mala interpretación.
+- Si usted decide compartir las imágenes obtenidas a partir de este  proceso de datos, asegúrese de que el enlace quede visible o comparta este link para que puedan acceder a estas advertencias. Evitemos al máximo el mal uso o mala interpretación.
 
 - Tenga en cuenta que los datos no se expresan en tasas, así que se debe tener precaución en la interpretación del crecimiento del número de casos dado que el tamaño de la población en cada país es diferente.
 
