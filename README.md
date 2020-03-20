@@ -1,4 +1,4 @@
-# COVID-19: Análisis para Colombia
+# Evolución del COVID-19 en Colombia
 
 Giovany Babativa (@jgbabativam, gbabativam@usal.es)
 
