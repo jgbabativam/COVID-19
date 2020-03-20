@@ -27,7 +27,6 @@ Los datos se toman del repositorio CSSE de la Universidad Johns Hopkins (https:/
 Como se indica en la fuente, los datos se obtuvieron de la Organización Mundial de la Salud y de varias instituciones estatales de salud. Estos datos son propiedad de la Universidad John Hopkins y están disponibles solo para fines de investigación académica o enseñanza. Dado que los datos provienen de diferentes fuentes, no hay garantía de la precisión de los datos, por lo que es incorrecto utilizarlos con fines médicos o comerciales. Si se desea realizar un análisis de ese tipo por favor use las fuentes oficiales de cada país (https://github.com/CSSEGISandData/COVID-19). 
 
 En el caso de los datos para Colombia, se toma la información reportada por el Instituto Nacional de Salud con corte a las 20:00 hrs de cada día, el cual se encuentra en https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx. Para mayor información sobre el proceso de los datos se recomienda revisar el archivo COVID19Col.R.
->>>>>>> 88a2234843217101175529b311750594d434218f
 
 ## Advertencias
 

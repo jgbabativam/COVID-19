@@ -57,7 +57,7 @@ diasv <- total %>%
 ## https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx   corte 20:00 hrs
 diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-17", "nro_confirmados"] <- 75 
 diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-18", "nro_confirmados"] <- 102
-diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 108
+diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 128
 
 diasv[diasv$Country.Region=="Chile" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
