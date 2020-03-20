@@ -7,7 +7,7 @@ Los resultados obtenidos en este informe están actualizados al: 19-03-2020
 
 ## Objetivo del recurso
 
-Este recurso se hace con fines académicos y no tiene un propósito específico para lograr explicar alguna metodología de análisis o algún tipo de modelo de datos. El código en R se deja abierto para generar transparencia del procesamiento de datos y resultados. Este script puede ser utilizado en la academia por otros colegas o estudiantes que deseen replicar los resultados o hacer otros análisis a partir de los datos.
+Este recurso se hace con fines académicos y no tiene un propósito específico de explicar alguna metodología de análisis o algún tipo de modelo de datos. El código en R se deja abierto para generar transparencia en el procesamiento de los datos y resultados. Este script puede ser utilizado en la academia por otros colegas o estudiantes que deseen replicar los resultados o hacer otros análisis a partir de los mismos.
 
 ## Fuente de los datos
 
@@ -25,7 +25,7 @@ En el caso de los datos para Colombia, la información se toma del reporte del I
 
 - Los límites de los ejes varían dependiendo de cada gráfico por lo que tenga cuidado al realizar comparaciones apresuradas.
 
-- Trate de enfocar sus opiniones hacía lo académico.
+- Trate de orientar sus opiniones hacía lo académico.
 
 - Es posible que pueda encontrar errores. Si lo hace, por favor envíe un correo electrónico a gbabativam@gmail.com.
 
