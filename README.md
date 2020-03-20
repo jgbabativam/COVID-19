@@ -7,11 +7,9 @@ Los resultados obtenidos en este informe están actualizados al: 19-03-2020
 
 ## Objetivo del recurso
 
-Este recurso se hace solo con fines académicos, en ningún momento se espera que genere una sensación de pánico sino por el contrario se espera generar conciencia en la población sobre la importacia de respetar y seguir las recomendaciones sanitarias y de aislamiento.
+Este recurso se hace solo con fines académicos y aunque no se usa con un propósito específico para explicar alguna metodología de análisis o modelo de datos, el código en R se deja abierto para generar un proceso transparente. 
 
-Aunque no se usa con un propósito específico de explicar alguna metodología para el análisis o modelo de datos, el código en R se deja abierto para generar un proceso transparente. 
-
-En general considero que cualquier explicación sobre los modelos estadísticos puede ser mejor entendida por los estudiantes cuando se aplica en un escenario cercano para todos, así que si lo desean el código de R puede ser utilizado en la academia por otros colegas y estudiantes para replicar los resultados o hacer otros análisis. De igual manera, son bienvenidas todas las sugerencias sobre los análisis específicos que se presentan acá.
+Considero que cualquier explicación sobre los modelos estadísticos puede ser mejor entendida por los estudiantes cuando se aplica en un escenario cercano para todos, por esto el código de R puede ser utilizado en la academia por otros colegas y estudiantes para replicar los resultados o hacer otros análisis. De igual manera, son bienvenidas todas las sugerencias sobre los que se presentan acá.
 
 ## Fuente de los datos
 
@@ -35,6 +33,12 @@ En el caso de los datos para Colombia, el mismo se actualiza con la información
 
 - Recuerde que este es un recurso académico, los análisis epidemiológicos son más complejos y dependen de varios factores.
 
-Finalmente recuerde que acá solo se comparan algunos países que en lo particular me parecieron interesantes bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
+
+Finalmente recuerde que acá solo se comparan algunos países que me parecieron interesantes bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
+
+## Comparaciones entre países
+
+<image src="images/compara.png"> 
+<image src="images/worldmap.png"> 
 
 
