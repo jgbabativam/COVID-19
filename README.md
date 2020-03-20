@@ -30,11 +30,18 @@ En el caso de los datos para Colombia, el mismo se actualiza con la información
 
 - Recuerde que este es un recurso académico, los análisis epidemiológicos son más complejos y dependen de diversos factores.
 
+<<<<<<< HEAD
 Finalmente recuerde que acá solo se comparan algunos de los países que me parecieron interesantes, bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
+=======
+Finalmente recuerde que acá solo se comparan algunos países que me parecieron interesantes bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
+>>>>>>> a0a650a5f9d84793ce2d38a08c595c9da169a52f
 
 ## Comparaciones entre países
 
 <image src="images/compara.png"> 
 <image src="images/worldmap.png"> 
+<<<<<<< HEAD
 
 ## Gráficos específicos para Colombia
+=======
+>>>>>>> a0a650a5f9d84793ce2d38a08c595c9da169a52f
