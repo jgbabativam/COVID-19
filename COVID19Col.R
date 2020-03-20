@@ -4,6 +4,7 @@ library(maps)
 library(ggthemes)
 library(lubridate)
 library(ggpubr)
+library(ggrepel)
 
 url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
 
@@ -56,8 +57,14 @@ diasv <- total %>%
 ## https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx   corte 20:00 hrs
 diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-17", "nro_confirmados"] <- 75 
 diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-18", "nro_confirmados"] <- 102
+diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 108
+
+diasv[diasv$Country.Region=="Chile" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 342
+
 diasv$newcases <-  with(diasv, ifelse(dias == 1, nro_confirmados, nro_confirmados - lag(nro_confirmados)))
 
+fecha <- total %>% 
+         dplyr::filter(fecha == lubridate::today()-1 & nro_confirmados > 0)
 
 #### Graficas comparativas
 rday <- max(diasv[diasv$Country.Region=="Brazil", "dias"])
@@ -81,27 +88,28 @@ g1 <- diasv %>%
              caption= paste0("Fuente: repositorio CSSE - Universidad Johns Hopkins. Fecha de corte: ", Sys.Date()-1))+
         theme_bw() + theme(legend.key = element_blank(), legend.title = element_blank())
 
-##.... Grafico recortado para ver algunos países de América del Sur.
 g2 <-  diasv %>% 
         ggplot(aes(x = dias, y = nro_confirmados, colour = Country.Region), size = 1.5, alpha = .9) + 
         geom_line(size = 1.2, alpha = .9) +
+        geom_text_repel(data = dplyr::filter(diasv, fecha == lubridate::today()-1), aes(x = dias, y = nro_confirmados, label = nro_confirmados), size=3.5, segment.color = "grey50", arrow = arrow(length = unit(0.03, "npc"), type = "closed", ends = "first"), hjust=1.0)+
         scale_colour_manual(values = paleta) +
         xlab("días transcurridos desde el caso 1")+
         ylab("Casos confirmados") +
         labs(title=paste0("Evolución durante los primeros ", rday," días"))+
-        xlim(0, rday) + ylim(0, vmax) +
+        xlim(0, rday+1) + ylim(0, vmax+5) +
         theme_bw() + theme(legend.key = element_blank(), legend.title = element_blank(), legend.position = "none")
 
 
 g3 <-  diasv %>% 
         ggplot(aes(x = dias, y = newcases, colour = Country.Region), size = 1.5, alpha = .9) + 
         geom_line(size = 1.0, alpha = .9) +
+        geom_text_repel(data = dplyr::filter(diasv, fecha == lubridate::today()-1), aes(x = dias, y = newcases, label = newcases), size=3.5, segment.color = "grey50", arrow = arrow(length = unit(0.03, "npc"), type = "closed", ends = "first"), hjust=1.0)+
         scale_colour_manual(values = paleta) +
         xlab("días transcurridos desde el caso 1")+
         ylab("Nuevos casos") +
         labs(title="Nuevos casos por día",
              caption="@jgbabativam, detalles en https://github.com/jgbabativam/COVID-19")+
-        xlim(0, rday) + ylim(0, cmax) +
+        xlim(0, rday+1) + ylim(0, cmax+5) +
         theme_bw() + theme(legend.key = element_blank(), legend.title = element_blank(), legend.position = "none") 
 
 ggsave(file = "./images/compara.png", 
@@ -110,9 +118,6 @@ width = 12, height = 8, dpi = 100, units = "in", device='png')
 
 
 ## Mapa
-fecha <- total %>% 
-         dplyr::filter(fecha == lubridate::today()-1 & nro_confirmados > 0)
-summary(fecha)
 
 mundo <- ggplot() +
           borders("world", colour = "gray85", fill = "gray80") +
@@ -124,3 +129,4 @@ ggsave(file = "./images/worldmap.png", mundo +
         labs(title = paste0("Casos confirmados COVID-19 al ", lubridate::today()-1), size = 'Confirmados', caption = "@jgbabativam") +
         theme(plot.caption = element_text(hjust = 0, color="gray40", size=15)), 
 width = 12, height = 8, dpi = 100, units = "in", device='png')
+
