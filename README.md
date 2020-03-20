@@ -1,4 +1,4 @@
-# Evolución del COVID-19 en Colombia
+# COVID-19: Descripción gráfica de la evolución en Colombia
 
 Giovany Babativa (@jgbabativam, gbabativam@usal.es)
 
