@@ -11,12 +11,12 @@ url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_co
 
 confirmados <- read.csv(paste0(url, "time_series_19-covid-Confirmed.csv")) %>%
                pivot_longer(-c("Province.State", "Country.Region", "Lat", "Long"), 
-                            names_to = "fecha", values_to = "nro_confirmados") %>%    ## Reestructurar base de datos, columna con fecha 
-               separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%                   ## Separar la fecha para conformar una varaible de fecha
+                            names_to = "fecha", values_to = "nro_confirmados") %>%    
+               separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%                
                mutate(mes = gsub("X", "", mes),
                       anno = paste0("20", anno),
-                      fecha = lubridate::date(paste(anno, mes, dia, sep = "-")) ) %>%             ### Construcción de variable de fecha
-                dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_confirmados)   ### Dejar solo las variables de interés
+                      fecha = lubridate::date(paste(anno, mes, dia, sep = "-")) ) %>%   
+                dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_confirmados)   
 
 
 muertos  <- read.csv(paste0(url, "time_series_19-covid-Deaths.csv")) %>%
@@ -54,7 +54,7 @@ diasv <- total %>%
             ungroup()
 
 ## https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx   corte 20:00 hrs
-diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-17", "nro_confirmados"] <- 75 ## https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx
+diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-17", "nro_confirmados"] <- 75 
 diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-18", "nro_confirmados"] <- 102
 diasv$newcases <-  with(diasv, ifelse(dias == 1, nro_confirmados, nro_confirmados - lag(nro_confirmados)))
 
