@@ -49,7 +49,7 @@ total <- full_join(confirmados, muertos,
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-17", "nro_confirmados"] <- 75 
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-18", "nro_confirmados"] <- 102
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-19", "nro_confirmados"] <- 128
-total[total$Country.Region=="Colombia" & total$fecha=="2020-03-19", "nro_confirmados"] <- 158
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-20", "nro_confirmados"] <- 158
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
