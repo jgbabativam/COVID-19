@@ -38,7 +38,7 @@ Finalmente recuerde que acá solo se comparan algunos países que me parecieron 
 <image src="images/compara.png"> 
 <image src="images/worldmap.png"> 
 
-El siguiente gráfico compara la tasa de contagio por cada 100 mil habitantes, para la población mundial se utilizó la información reportada por https://www.census.gov/popclock/world, en el caso de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la población se obtuvo del siguiente enlace (https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n) donde además se verificó la consistencia de la información para Colombia frente a las proyecciones DANE 2020. La tasa de contagio se calcula con los casos confirmados en determinada fecha en la región y se divide por el total poblacional de la región, ese resultado es multiplicado por 100 mil.
+El siguiente gráfico compara la tasa de contagio por cada 100 mil habitantes, para la población mundial se utilizó la información reportada por https://www.census.gov/popclock/world, en el caso de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la población se obtuvo del siguiente enlace (https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n) donde además se verificó la consistencia de la información para Colombia frente a las proyecciones DANE 2020. La tasa de contagio se calcula con los casos confirmados en determinada fecha en la región y se divide por el total poblacional de la región, ese resultado es multiplicado por un millón. Para ver los detalles consulte el script COVID19Col.R.
 
 <image src="images/TasaContagio.png">
 
