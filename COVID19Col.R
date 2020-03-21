@@ -134,15 +134,15 @@ width = 12, height = 8, dpi = 100, units = "in", device='png')
 
 
 ##### Comparacion mundial, America del sur y Colombia
-PobMund <- 7637813000/100000    # por 100.000, fuente; https://www.census.gov/popclock/world
-PobAmeS <-  425102561/100000    # por 100.000, fuente: https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n
-PobColb <-   50372424/100000    #Proyecciones DANE 2020
+PobMund <- 7637813000/1000000    # por 1.000.000, fuente; https://www.census.gov/popclock/world
+PobAmeS <-  425102561/1000000    # por 1.000.000, fuente: https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n
+PobColb <-   50372424/1000000    #Proyecciones DANE 2020
 
 AggWorld <- total %>% 
             group_by(fecha) %>% 
             summarise(confirmados = sum(nro_confirmados)) %>% 
             mutate(geo = "1. Mundo", dia = row_number(), 
-                   Tasa = round(100 * (confirmados / PobMund), 1)) # por cada 100.000 habitantes
+                   Tasa = round(confirmados / PobMund, 1)) # por cada 1.000.000 habitantes
 
 SurAmer <- c("Brazil", "Colombia", "Argentina", "Peru", "Venezuela", "Chile", 
              "Ecuador", "Bolivia", "Paraguay", "Uruguay")
@@ -153,14 +153,14 @@ AggAmer <- total %>%
             summarise(confirmados = sum(nro_confirmados)) %>% 
             dplyr::filter(confirmados >0) %>% 
             mutate(geo = "2. América del Sur", dia = row_number(), 
-                   Tasa = round(100 * (confirmados / PobAmeS), 1)) # por cada 100.000 habitantes
+                   Tasa = round(confirmados / PobAmeS, 1)) # por cada 100.000 habitantes
 
 AggColb <- total %>% 
             dplyr::filter(Country.Region == "Colombia" & nro_confirmados >0) %>% 
             group_by(fecha) %>% 
             summarise(confirmados = sum(nro_confirmados)) %>% 
             mutate(geo = "3. Colombia", dia = row_number(), 
-                   Tasa = round(100 * (confirmados / PobColb), 1)) # por cada 100.000 habitantes
+                   Tasa = round(confirmados / PobColb, 1)) # por cada 100.000 habitantes
 
 Aggs <- rbind(AggWorld, AggAmer, AggColb)
 rm(AggWorld, AggAmer, AggColb)
@@ -173,12 +173,12 @@ a1 <-  Aggs %>%
         geom_text_repel(data = dplyr::filter(Aggs, dia >  12), aes(x = dia, y = Tasa, label = Tasa), size=3.5, hjust=1.0)+
         scale_colour_manual(values = c("darkgreen", "#3333FF", "darkorange")) +
         scale_x_continuous(breaks = seq(from = 0, to=60, by = 2)) +
-        geom_hline(yintercept = 100, color = "black", linetype = 2) +
-        geom_hline(yintercept = 200, color = "black", linetype = 2) +
-        geom_hline(yintercept = 300, color = "black", linetype = 2) +
+        geom_hline(yintercept = 10, color = "black", linetype = 2) +
+        geom_hline(yintercept = 20, color = "black", linetype = 2) +
+        geom_hline(yintercept = 30, color = "black", linetype = 2) +
         xlab("días transcurridos desde el primer caso")+
-        ylab("Contagios x cada 100 mil habitantes") +
-        labs(title=paste0("Tasa diaria de contagios por cada 100 mil habitantes"),
+        ylab("Confirmados x cada millón de habitantes") +
+        labs(title=paste0("Tasa diaria de confirmados por cada millón de habitantes"),
              caption = paste0("Fuente: repositorio CSSE - Universidad Johns Hopkins, census.gov. Fecha de corte: ", Sys.Date()-1, ". @jgbabativam, consulte detalles: https://github.com/jgbabativam/COVID-19"))+
         theme_classic() + theme(legend.title = element_blank(), legend.position = "bottom")
 
