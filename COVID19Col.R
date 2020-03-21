@@ -44,6 +44,15 @@ total <- full_join(confirmados, muertos,
          full_join(recuperados, by = c("Country.Region", "Province.State", "Lat", "Long", "fecha"))
 
 
+
+## https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx   corte 20:00 hrs
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-17", "nro_confirmados"] <- 75 
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-18", "nro_confirmados"] <- 102
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-19", "nro_confirmados"] <- 128
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-19", "nro_confirmados"] <- 158
+
+total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
+
 ###---- Análisis de los días desde el brote
 
 paises <- c("Argentina", "Brazil" ,"Colombia", "Ecuador", "Chile", "Spain", "Italy")
@@ -53,13 +62,6 @@ diasv <- total %>%
             group_by(Country.Region) %>% 
             mutate(dias = row_number()) %>% 
             ungroup()
-
-## https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx   corte 20:00 hrs
-diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-17", "nro_confirmados"] <- 75 
-diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-18", "nro_confirmados"] <- 102
-diasv[diasv$Country.Region=="Colombia" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 128
-
-diasv[diasv$Country.Region=="Chile" & diasv$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
 diasv$newcases <-  with(diasv, ifelse(dias == 1, nro_confirmados, nro_confirmados - lag(nro_confirmados)))
 
@@ -130,3 +132,55 @@ ggsave(file = "./images/worldmap.png", mundo +
         theme(plot.caption = element_text(hjust = 0, color="gray40", size=15)), 
 width = 12, height = 8, dpi = 100, units = "in", device='png')
 
+
+##### Comparacion mundial, America del sur y Colombia
+PobMund <- 7637813000/100000    # por 100.000, fuente; https://www.census.gov/popclock/world
+PobAmeS <-  425102561/100000    # por 100.000, fuente: https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n
+PobColb <-   50372424/100000    #Proyecciones DANE 2020
+
+AggWorld <- total %>% 
+            group_by(fecha) %>% 
+            summarise(confirmados = sum(nro_confirmados)) %>% 
+            mutate(geo = "1. Mundo", dia = row_number(), 
+                   Tasa = round(100 * (confirmados / PobMund), 1)) # por cada 100.000 habitantes
+
+SurAmer <- c("Brazil", "Colombia", "Argentina", "Peru", "Venezuela", "Chile", 
+             "Ecuador", "Bolivia", "Paraguay", "Uruguay")
+
+AggAmer <- total %>% 
+            dplyr::filter(Country.Region %in% SurAmer) %>% 
+            group_by(fecha) %>% 
+            summarise(confirmados = sum(nro_confirmados)) %>% 
+            dplyr::filter(confirmados >0) %>% 
+            mutate(geo = "2. América del Sur", dia = row_number(), 
+                   Tasa = round(100 * (confirmados / PobAmeS), 1)) # por cada 100.000 habitantes
+
+AggColb <- total %>% 
+            dplyr::filter(Country.Region == "Colombia" & nro_confirmados >0) %>% 
+            group_by(fecha) %>% 
+            summarise(confirmados = sum(nro_confirmados)) %>% 
+            mutate(geo = "3. Colombia", dia = row_number(), 
+                   Tasa = round(100 * (confirmados / PobColb), 1)) # por cada 100.000 habitantes
+
+Aggs <- rbind(AggWorld, AggAmer, AggColb)
+rm(AggWorld, AggAmer, AggColb)
+
+
+a1 <-  Aggs %>% 
+        ggplot(aes(x = dia, y = Tasa, colour = geo), size = 1.5, alpha = .9) + 
+        geom_point(aes(shape = geo), size = 2.5) +
+        geom_line(size = 1.2, alpha = .9) +
+        geom_text_repel(data = dplyr::filter(Aggs, dia >  12), aes(x = dia, y = Tasa, label = Tasa), size=3.5, hjust=1.0)+
+        scale_colour_manual(values = c("darkgreen", "#3333FF", "darkorange")) +
+        scale_x_continuous(breaks = seq(from = 0, to=60, by = 2)) +
+        geom_hline(yintercept = 100, color = "black", linetype = 2) +
+        geom_hline(yintercept = 200, color = "black", linetype = 2) +
+        geom_hline(yintercept = 300, color = "black", linetype = 2) +
+        xlab("días transcurridos desde el primer caso")+
+        ylab("Contagios x cada 100 mil habitantes") +
+        labs(title=paste0("Tasa diaria de contagios por cada 100 mil habitantes"),
+             caption = paste0("Fuente: repositorio CSSE - Universidad Johns Hopkins, census.gov. Fecha de corte: ", Sys.Date()-1, ". @jgbabativam, consulte detalles: https://github.com/jgbabativam/COVID-19"))+
+        theme_classic() + theme(legend.title = element_blank(), legend.position = "bottom")
+
+ggsave(file = "./images/TasaContagio.png", a1,
+       width = 12, height = 8, dpi = 100, units = "in", device='png')
