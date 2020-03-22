@@ -15,7 +15,9 @@ Los datos se toman del repositorio CSSE de la Universidad Johns Hopkins (https:/
 
 Como lo indica la fuente, estos datos se obtuvieron de la Organización Mundial de la Salud y de varias instituciones estatales de salud. Los datos son propiedad de la Universidad John Hopkins y están disponibles para fines de investigación académica o de enseñanza. Dado que los datos provienen de diferentes fuentes, no hay garantía de la precisión de los mismos, por lo que es incorrecto utilizarlos con fines médicos o comerciales. Si se desea realizar un análisis de ese tipo por favor use las fuentes oficiales de cada país (https://github.com/CSSEGISandData/COVID-19). 
 
-En el caso de los datos para Colombia, la información se toma del reporte del Instituto Nacional de Salud con corte a las 20:00 hrs de cada día, el cual se encuentra en https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx. Para mayor información sobre el proceso de los datos se recomienda revisar el archivo COVID19Col.R.
+En el caso de los datos para Colombia, la información se toma del reporte del Instituto Nacional de Salud con corte a las 20:00 hrs de cada día, el cual se encuentra en https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx. Para mayor información sobre el proceso de los datos se recomienda revisar el archivo COVID19Col.R. 
+
+Las tasas de confirmados fueron calculadas con base en la información poblacional del mundo reportada en la página www.census.gov, para el caso de los países de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la información se toma de este [link] (https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n) donde además se comparó la cifra poblacional para Colombia con su fuente oficial del [DANE] (https://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/proyecciones-de-poblacion).
 
 ## Advertencias
 
@@ -36,16 +38,15 @@ Finalmente recuerde que acá solo se comparan algunos países que me parecieron 
 ## Comparaciones entre países
 
 <image src="images/compara.png"> 
-<image src="images/worldmap.png"> 
 
-<<<<<<< HEAD
-El siguiente gráfico compara la tasa de contagio por cada 100 mil habitantes, para la población mundial se utilizó la información reportada por https://www.census.gov/popclock/world, en el caso de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la población se obtuvo del siguiente enlace (https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n) donde además se verificó la consistencia de la información para Colombia frente a las proyecciones DANE 2020. La tasa de contagio se calcula con los casos confirmados en determinada fecha en la región y se divide por el total poblacional de la región, ese resultado es multiplicado por un millón.
-=======
-El siguiente gráfico compara la tasa de contagio por cada 100 mil habitantes, para la población mundial se utilizó la información reportada por https://www.census.gov/popclock/world, en el caso de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la población se obtuvo del siguiente enlace (https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n) donde además se verificó la consistencia de la información para Colombia frente a las proyecciones DANE 2020. La tasa de contagio se calcula con los casos confirmados en determinada fecha en la región y se divide por el total poblacional de la región, ese resultado es multiplicado por un millón. Para ver los detalles consulte el script COVID19Col.R.
->>>>>>> 4f6c8507a1d7b16495460ee0334416d0f22b01e4
+El siguiente gráfico compara la tasa diaria de casos confirmados por cada millón de habitantes. La tasa se calcula con los casos confirmados en la región en la fecha determinada y se divide por el total poblacional de la región, ese resultado es multiplicado por un millón. Para ver los detalles consulte el script COVID19Col.R.
 
 <image src="images/TasaContagio.png">
 
+<image src="images/worldmap.png"> 
+  
 ## Gráficos específicos para Colombia
 
+<image src="images/EvolMapCol.gif"> 
+  
 <image src="images/EvolCol.gif"> 

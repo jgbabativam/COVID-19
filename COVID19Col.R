@@ -49,7 +49,8 @@ total <- full_join(confirmados, muertos,
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-17", "nro_confirmados"] <- 75 
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-18", "nro_confirmados"] <- 102
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-19", "nro_confirmados"] <- 128
-total[total$Country.Region=="Colombia" & total$fecha=="2020-03-20", "nro_confirmados"] <- 158
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-20", "nro_confirmados"] <- 175
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-21", "nro_confirmados"] <- 210
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
@@ -176,7 +177,7 @@ a1 <-  Aggs %>%
         geom_hline(yintercept = 10, color = "black", linetype = 2) +
         geom_hline(yintercept = 20, color = "black", linetype = 2) +
         geom_hline(yintercept = 30, color = "black", linetype = 2) +
-        xlab("días transcurridos desde el primer caso")+
+        xlab("días transcurridos desde que se detectó el primer caso en cada subpoblación")+
         ylab("Confirmados x cada millón de habitantes") +
         labs(title=paste0("Tasa diaria de confirmados por cada millón de habitantes"),
              caption = paste0("Fuente: repositorio CSSE - Universidad Johns Hopkins, census.gov. Fecha de corte: ", Sys.Date()-1, ". @jgbabativam, consulte detalles: https://github.com/jgbabativam/COVID-19"))+
