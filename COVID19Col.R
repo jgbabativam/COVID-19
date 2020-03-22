@@ -154,14 +154,14 @@ AggAmer <- total %>%
             summarise(confirmados = sum(nro_confirmados)) %>% 
             dplyr::filter(confirmados >0) %>% 
             mutate(geo = "2. América del Sur", dia = row_number(), 
-                   Tasa = round(confirmados / PobAmeS, 1)) # por cada 100.000 habitantes
+                   Tasa = round(confirmados / PobAmeS, 1)) # por cada 1.000.000 habitantes
 
 AggColb <- total %>% 
             dplyr::filter(Country.Region == "Colombia" & nro_confirmados >0) %>% 
             group_by(fecha) %>% 
             summarise(confirmados = sum(nro_confirmados)) %>% 
             mutate(geo = "3. Colombia", dia = row_number(), 
-                   Tasa = round(confirmados / PobColb, 1)) # por cada 100.000 habitantes
+                   Tasa = round(confirmados / PobColb, 1)) # por cada 1.000.000 habitantes
 
 Aggs <- rbind(AggWorld, AggAmer, AggColb)
 rm(AggWorld, AggAmer, AggColb)
