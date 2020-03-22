@@ -17,7 +17,7 @@ Como lo indica la fuente, estos datos se obtuvieron de la Organización Mundial 
 
 En el caso de los datos para Colombia, la información se toma del reporte del Instituto Nacional de Salud con corte a las 20:00 hrs de cada día, el cual se encuentra en https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx. Para mayor información sobre el proceso de los datos se recomienda revisar el archivo COVID19Col.R. 
 
-Las tasas de confirmados fueron calculadas con base en la información poblacional del mundo reportada en la página www.census.gov, para el caso de los países de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la información se toma de este <a href="https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n">enlace</a> donde además se comparó la cifra poblacional para Colombia con su fuente oficial del <a href="https://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/proyecciones-de-poblacion">DANE</a> [DANE].
+Las tasas de confirmados fueron calculadas con base en la información poblacional del mundo reportada en la página www.census.gov, para el caso de los países de América del Sur se excluye a Guyana, Surinam y Guyana Francesa, la información se toma de este <a href="https://es.wikipedia.org/wiki/Anexo:Pa%C3%ADses_de_Am%C3%A9rica_del_Sur_por_poblaci%C3%B3n">enlace</a> donde además se comparó la cifra poblacional para Colombia con su fuente oficial del <a href="https://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/proyecciones-de-poblacion">DANE</a>.
 
 ## Advertencias
 
@@ -46,7 +46,10 @@ El siguiente gráfico compara la tasa diaria de casos confirmados por cada mill�
 <image src="images/worldmap.png"> 
   
 ## Gráficos específicos para Colombia
+Evolución de casos diarios confirmados por departamento:
 
 <image src="images/EvolMapCol.gif"> 
-  
+
+Evolución de casos diarios confirmados a nivel nacional:
+
 <image src="images/EvolCol.gif"> 
