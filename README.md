@@ -34,17 +34,6 @@ Las tasas de confirmados fueron calculadas con base en la información poblacion
 - Recuerde que este es un recurso académico, los análisis epidemiológicos son más complejos y dependen de diversos factores.
 
 Finalmente recuerde que acá solo se comparan algunos países que me parecieron interesantes, bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
-
-## Comparaciones entre países
-
-<image src="images/compara.png"> 
-
-El siguiente gráfico compara la tasa diaria de casos confirmados por cada millón de habitantes. La tasa se calcula con los casos confirmados en la región en la fecha determinada y se divide por el total poblacional de la región, ese resultado es multiplicado por un millón. Para ver los detalles consulte el script COVID19Col.R.
-
-<image src="images/TasaContagio.png">
-
-<image src="images/worldmap.png"> 
-  
 ## Gráficos específicos para Colombia
 Evolución de casos diarios confirmados por departamento:
 
@@ -57,3 +46,15 @@ Evolución epidemiológica nacional:
 Evolución de casos diarios confirmados a nivel nacional:
 
 <image src="images/EvolCol.gif"> 
+  
+## Comparaciones entre países
+
+<image src="images/compara.png"> 
+
+El siguiente gráfico compara la tasa diaria de casos confirmados por cada millón de habitantes. La tasa se calcula con los casos confirmados en la región en la fecha determinada y se divide por el total poblacional de la región, ese resultado es multiplicado por un millón. Para ver los detalles consulte el script COVID19Col.R.
+
+<image src="images/TasaContagio.png">
+
+<image src="images/worldmap.png"> 
+  
+
