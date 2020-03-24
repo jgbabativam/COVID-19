@@ -2,7 +2,7 @@
 
 Giovany Babativa (@jgbabativam, gbabativam@usal.es)
 
-Los resultados obtenidos en este informe están actualizados al: 21-03-2020
+Los resultados obtenidos en este informe están actualizados al: 22-03-2020
 
 
 ## Objetivo del recurso

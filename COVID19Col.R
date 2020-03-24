@@ -51,6 +51,13 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-18", "nro_confirm
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-19", "nro_confirmados"] <- 128
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-20", "nro_confirmados"] <- 175
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-21", "nro_confirmados"] <- 210
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-22", "nro_confirmados"] <- 235
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_confirmados"] <- 306
+
+## Muertes
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_muertos"] <- 3
+#Recuperados
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_recuperados"] <- 6
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
