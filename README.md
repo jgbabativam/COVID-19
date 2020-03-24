@@ -50,6 +50,10 @@ Evolución de casos diarios confirmados por departamento:
 
 <image src="images/EvolMapCol.gif"> 
 
+Evolución epidemiológica nacional:
+
+<image src="images/TendEpidMultivar.png"> 
+
 Evolución de casos diarios confirmados a nivel nacional:
 
 <image src="images/EvolCol.gif"> 
