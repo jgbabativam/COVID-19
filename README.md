@@ -56,3 +56,8 @@ El siguiente gr√°fico compara la tasa diaria de casos confirmados por cada mill√
 <image src="images/TasaContagio.png">
 
 <image src="images/worldmap.png"> 
+<<<<<<< HEAD
+=======
+  
+
+>>>>>>> ebef16621f4ac1b6d75db19d4db947a7c520ccc1
