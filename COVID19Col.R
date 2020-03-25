@@ -1,4 +1,5 @@
 #####.... Programado por Giovany Babativa
+options(stringsAsFactors=FALSE)
 library(tidyverse)
 library(maps)
 library(ggthemes)
@@ -10,17 +11,17 @@ url <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_co
 
 #......
 
-confirmados <- read.csv(paste0(url, "time_series_19-covid-Confirmed.csv")) %>%
+confirmados <- read.csv(paste0(url, "time_series_covid19_confirmed_global.csv")) %>%
                pivot_longer(-c("Province.State", "Country.Region", "Lat", "Long"), 
                             names_to = "fecha", values_to = "nro_confirmados") %>%    
                separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%                
                mutate(mes = gsub("X", "", mes),
                       anno = paste0("20", anno),
                       fecha = lubridate::date(paste(anno, mes, dia, sep = "-")) ) %>%   
-                dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_confirmados)   
+               dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_confirmados)   
 
 
-muertos  <- read.csv(paste0(url, "time_series_19-covid-Deaths.csv")) %>%
+muertos  <- read.csv(paste0(url, "time_series_covid19_deaths_global.csv")) %>%
             pivot_longer(-c("Province.State", "Country.Region", "Lat", "Long"), 
                          names_to = "fecha", values_to = "nro_muertos") %>%
             separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%
@@ -30,6 +31,7 @@ muertos  <- read.csv(paste0(url, "time_series_19-covid-Deaths.csv")) %>%
             dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_muertos)
 
 
+## El repositorio ha dejado de actualizar esta informacion
 recuperados <- read.csv(paste0(url, "time_series_19-covid-Recovered.csv")) %>%
                pivot_longer(cols = matches("^X[0-9]{1,2}"), names_to = "fecha", values_to = "nro_recuperados") %>%
                separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%
@@ -38,10 +40,9 @@ recuperados <- read.csv(paste0(url, "time_series_19-covid-Recovered.csv")) %>%
                       fecha = lubridate::date(paste(anno, mes, dia, sep = "-")) ) %>%
                dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_recuperados)
 
-
 total <- full_join(confirmados, muertos,  
-                   by = c("Country.Region", "Province.State", "Lat", "Long", "fecha")) %>% 
-         full_join(recuperados, by = c("Country.Region", "Province.State", "Lat", "Long", "fecha"))
+                   by = c("Country.Region", "Province.State", "Lat", "Long", "fecha")) #%>% 
+         #left_join(recuperados, by = c("Country.Region", "Province.State", "Lat", "Long", "fecha"))
 
 
 
@@ -53,11 +54,15 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-20", "nro_confirm
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-21", "nro_confirmados"] <- 210
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-22", "nro_confirmados"] <- 235
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_confirmados"] <- 306
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_confirmados"] <- 378
 
 ## Muertes
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_muertos"] <- 3
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_muertos"] <- 3
 #Recuperados
+total$nro_recuperados <- 0  #Temporal solo para Colombia
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_recuperados"] <- 6
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_recuperados"] <- 6
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
@@ -91,7 +96,7 @@ g1 <- diasv %>%
         geom_line(size = 1.2, alpha = .9) +
         scale_colour_manual(values = paleta) +
         scale_x_continuous(breaks = seq(from = 0, to=180, by = 4)) +
-        scale_y_continuous(breaks = seq(from = 0, to=60000, by = 2000)) +
+        scale_y_continuous(breaks = seq(from = 0, to=90000, by = 3000)) +
         xlab("días transcurridos desde el caso 1")+
         ylab("Número de casos") +
         labs(title="Número de casos confirmados",
@@ -106,7 +111,8 @@ g2 <-  diasv %>%
         xlab("días transcurridos desde el caso 1")+
         ylab("Casos confirmados") +
         labs(title=paste0("Evolución durante los primeros ", rday," días"))+
-        xlim(0, rday+1) + ylim(0, vmax+5) +
+        xlim(0, rday + 1) +
+        ylim(0, vmax+5) +
         theme_bw() + theme(legend.key = element_blank(), legend.title = element_blank(), legend.position = "none")
 
 
