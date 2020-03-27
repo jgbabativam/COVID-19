@@ -56,11 +56,13 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-22", "nro_confirm
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_confirmados"] <- 306
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_confirmados"] <- 378
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-25", "nro_confirmados"] <- 470
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_confirmados"] <- 491
 
 ## Muertes
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_muertos"] <- 3
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_muertos"] <- 3
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-25", "nro_muertos"] <- 4
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_muertos"] <- 6
 
 #Recuperados
 
@@ -68,6 +70,7 @@ total$nro_recuperados <- 0  #Temporal solo para Colombia
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_recuperados"] <- 6
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_recuperados"] <- 6
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-25", "nro_recuperados"] <- 8
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_recuperados"] <- 8
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
