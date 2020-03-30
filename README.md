@@ -2,7 +2,11 @@
 
 Giovany Babativa (@jgbabativam, gbabativam@usal.es)
 
+<<<<<<< HEAD
 Los resultados obtenidos en este informe están actualizados al: 29-03-2020
+=======
+Los resultados obtenidos en este informe están actualizados al: 26-03-2020
+>>>>>>> 7fd6d7d6c555622bfde06ed8995e29e90503ac08
 
 
 ## Objetivo del recurso
