@@ -2,12 +2,7 @@
 
 Giovany Babativa (@jgbabativam, gbabativam@usal.es)
 
-<<<<<<< HEAD
 Los resultados obtenidos en este informe están actualizados al: 29-03-2020
-=======
-Los resultados obtenidos en este informe están actualizados al: 26-03-2020
->>>>>>> 7fd6d7d6c555622bfde06ed8995e29e90503ac08
-
 
 ## Objetivo del recurso
 
@@ -38,6 +33,7 @@ Las tasas de confirmados fueron calculadas con base en la información poblacion
 - Recuerde que este es un recurso académico, los análisis epidemiológicos son más complejos y dependen de diversos factores.
 
 Finalmente recuerde que acá solo se comparan algunos países que me parecieron interesantes, bien sea por su cercanía con Colombia o por la velocidad de propagación que presentó, pero el repositorio cuenta con resultados para todos los países donde se han presentado casos. Si usted lo desea puede usar el código para agregar, retirar o simplemente analizar los países que prefiera.
+
 ## Gráficos específicos para Colombia
 Evolución de casos diarios confirmados por departamento:
 
