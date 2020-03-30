@@ -57,13 +57,17 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_confirm
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_confirmados"] <- 378
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-25", "nro_confirmados"] <- 470
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_confirmados"] <- 491
-
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-27", "nro_confirmados"] <- 539
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-28", "nro_confirmados"] <- 608
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-29", "nro_confirmados"] <- 702
 ## Muertes
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_muertos"] <- 3
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_muertos"] <- 3
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-25", "nro_muertos"] <- 4
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_muertos"] <- 6
-
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-27", "nro_muertos"] <- 6
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-28", "nro_muertos"] <- 6
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-29", "nro_muertos"] <- 10
 #Recuperados
 
 total$nro_recuperados <- 0  #Temporal solo para Colombia
@@ -71,6 +75,9 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_recuper
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_recuperados"] <- 6
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-25", "nro_recuperados"] <- 8
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_recuperados"] <- 8
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-27", "nro_recuperados"] <- 10
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-28", "nro_recuperados"] <- 10
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-29", "nro_recuperados"] <- 10
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
