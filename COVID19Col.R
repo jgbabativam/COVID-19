@@ -31,18 +31,21 @@ muertos  <- read.csv(paste0(url, "time_series_covid19_deaths_global.csv")) %>%
             dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_muertos)
 
 
-## El repositorio ha dejado de actualizar esta informacion
-recuperados <- read.csv(paste0(url, "time_series_19-covid-Recovered.csv")) %>%
-               pivot_longer(cols = matches("^X[0-9]{1,2}"), names_to = "fecha", values_to = "nro_recuperados") %>%
-               separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%
-               mutate(mes = gsub("X", "", mes),
-                      anno = paste0("20", anno),
-                      fecha = lubridate::date(paste(anno, mes, dia, sep = "-")) ) %>%
-               dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_recuperados)
+recuperados <- read.csv(paste0(url, "time_series_covid19_recovered_global.csv")) %>%
+  pivot_longer(cols = matches("^X[0-9]{1,2}"), names_to = "fecha", values_to = "nro_recuperados") %>%
+  separate(fecha, c("mes", "dia", "anno"), sep = "\\.") %>%
+  mutate(mes = gsub("X", "", mes),
+         anno = paste0("20", anno),
+         fecha = lubridate::date(paste(anno, mes, dia, sep = "-")) ) %>%
+  dplyr::select(Country.Region, Province.State, Lat, Long, fecha, nro_recuperados)
+
+confirmados$Province.State=as.character(confirmados$Province.State)
+muertos$Province.State = as.character(muertos$Province.State)
+recuperados$Province.State=as.character(recuperados$Province.State)
 
 total <- full_join(confirmados, muertos,  
-                   by = c("Country.Region", "Province.State", "Lat", "Long", "fecha")) #%>% 
-         #left_join(recuperados, by = c("Country.Region", "Province.State", "Lat", "Long", "fecha"))
+                   by = c("Country.Region", "Province.State", "Lat", "Long", "fecha")) %>% 
+         left_join(recuperados, by = c("Country.Region", "Province.State", "Lat", "Long", "fecha"))
 
 
 
@@ -60,6 +63,8 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_confirm
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-27", "nro_confirmados"] <- 539
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-28", "nro_confirmados"] <- 608
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-29", "nro_confirmados"] <- 702
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-30", "nro_confirmados"] <- 798
+
 ## Muertes
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-23", "nro_muertos"] <- 3
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-24", "nro_muertos"] <- 3
@@ -68,6 +73,8 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_muertos
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-27", "nro_muertos"] <- 6
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-28", "nro_muertos"] <- 6
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-29", "nro_muertos"] <- 10
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-30", "nro_muertos"] <- 14
+
 #Recuperados
 
 total$nro_recuperados <- 0  #Temporal solo para Colombia
@@ -78,6 +85,7 @@ total[total$Country.Region=="Colombia" & total$fecha=="2020-03-26", "nro_recuper
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-27", "nro_recuperados"] <- 10
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-28", "nro_recuperados"] <- 10
 total[total$Country.Region=="Colombia" & total$fecha=="2020-03-29", "nro_recuperados"] <- 10
+total[total$Country.Region=="Colombia" & total$fecha=="2020-03-30", "nro_recuperados"] <- 15
 
 total[total$Country.Region=="Chile" & total$fecha=="2020-03-19", "nro_confirmados"] <- 342
 
@@ -98,7 +106,7 @@ fecha <- total %>%
 
 #### Graficas comparativas
 rday <- max(diasv[diasv$Country.Region=="Brazil", "dias"])
-paleta <- c("#73ACDF", "darkgreen","blue", "red", "purple", "darkgray", "#FFC30F")
+paleta <- c("#73ACDF", "darkgreen","blue", "red", "purple", "darkgray", "#FFC30F", "orange")
 
 ver <- diasv %>% 
        dplyr::filter(dias <= rday)
@@ -111,7 +119,7 @@ g1 <- diasv %>%
         geom_line(size = 1.2, alpha = .9) +
         scale_colour_manual(values = paleta) +
         scale_x_continuous(breaks = seq(from = 0, to=180, by = 4)) +
-        scale_y_continuous(breaks = seq(from = 0, to=90000, by = 3000)) +
+        scale_y_continuous(breaks = seq(from = 0, to=500000, by = 10000)) +
         xlab("días transcurridos desde el caso 1")+
         ylab("Número de casos") +
         labs(title="Número de casos confirmados",
@@ -119,6 +127,7 @@ g1 <- diasv %>%
         theme_bw() + theme(legend.key = element_blank(), legend.title = element_blank())
 
 g2 <-  diasv %>% 
+        dplyr::filter(!Country.Region %in% c("Spain", "Italy")) %>% 
         ggplot(aes(x = dias, y = nro_confirmados, colour = Country.Region), size = 1.5, alpha = .9) + 
         geom_line(size = 1.2, alpha = .9) +
         geom_text_repel(data = dplyr::filter(diasv, fecha == lubridate::today()-1), aes(x = dias, y = nro_confirmados, label = nro_confirmados), size=3.5, segment.color = "grey50", arrow = arrow(length = unit(0.03, "npc"), type = "closed", ends = "first"), hjust=1.0)+
@@ -132,6 +141,7 @@ g2 <-  diasv %>%
 
 
 g3 <-  diasv %>% 
+        dplyr::filter(!Country.Region %in% c("Spain", "Italy")) %>% 
         ggplot(aes(x = dias, y = newcases, colour = Country.Region), size = 1.5, alpha = .9) + 
         geom_line(size = 1.0, alpha = .9) +
         geom_text_repel(data = dplyr::filter(diasv, fecha == lubridate::today()-1), aes(x = dias, y = newcases, label = newcases), size=3.5, segment.color = "grey50", arrow = arrow(length = unit(0.03, "npc"), type = "closed", ends = "first"), hjust=1.0)+
@@ -140,7 +150,7 @@ g3 <-  diasv %>%
         ylab("Nuevos casos") +
         labs(title="Nuevos casos por día",
              caption="@jgbabativam, detalles en https://github.com/jgbabativam/COVID-19")+
-        xlim(0, rday+1) + ylim(0, cmax+5) +
+        xlim(0, rday+1) + ylim(0, cmax+10) +
         theme_bw() + theme(legend.key = element_blank(), legend.title = element_blank(), legend.position = "none") 
 
 ggsave(file = "./images/compara.png", 
